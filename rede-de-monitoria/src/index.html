@@ -2,13 +2,44 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css">
     <title>Index</title>
   </head>
   <body>
-    <h1 class="text-red-700 font-bold text-center">Init</h1>
+    <main class="min-h-screen flex">
+      <section class="w-1/2 bg-[#065F2E] flex flex-col justify-center items-center p-16 gap-8">
+        <div class="w-40">
+          <img src="./assets/preview.jpeg" alt="logo" class="w-full">
+        </div>
+        <div>
+          <h2 class="text-white font-bold">Bem vindo a Rede de monitoria!</h2>
+          <p class="text-white">A plataforma onde alunos e monitores se encontram para ensinar e aprender!</p>
+        </div>
+      </section>
+      <section class="w-1/2 flex items-center justify-center bg-white"> 
+        <div class="max-w-md w-full px-8">
+
+          <h1 class="text-3xl text-gray-800 font-bold mb-8">Login</h1>
+
+          <form class="flex flex-col gap-4 py-6">
+            <div>
+              <label for="matricula" class="block mb-2 w-full">Matrícula</label>
+              <input id="matricula" type="number" placeholder="Insira sua matrícula" class="border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-green-600 w-full"/>
+            </div>
+            <div>
+              <label for="senha" class="block mb-2 w-full">Senha</label>
+              <input id="senha" type="password" placeholder="Insira sua senha" class="border border-gray-300 rounded-lg px-4 py-2 w-full"/>
+            </div>
+            <a class="text-red-800 text-right text-sm" href="">Esqueceu sua senha?</a>
+            <button class="w-full bg-[#166534] text-white rounded-sm">Entrar</button>
+          </form>
+          <p class="text-center mt-8 text-gray-600">
+            Não tem conta? <span class="text-[#166534] font-bold cursor-pointer hover:underline">Cadastre-se</span>
+          </p>
+        </div>
+      </section>
+    </main>
     <script type="module" src="/src/js/main.js"></script>
   </body>
 </html>
