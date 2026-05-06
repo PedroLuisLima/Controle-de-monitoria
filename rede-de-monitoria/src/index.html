@@ -1,56 +1,38 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css">
-    <title>Login - Rede de Monitoria</title>
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Home - Rede de Monitoria</title>
+</head>
 
-  <body>
-    <main class="min-h-screen flex">
+<body class="bg-gray-100 flex flex-col min-h-screen">
 
-      <section class="w-1/2 bg-gradient-to-br from-green-800 to-green-600 flex flex-col justify-center items-center p-16 gap-8">
+ <header class="bg-[#166534] text-white">
+    <div class="w-full px-6 py-3 flex items-center justify-between">
+    
+      <div class="flex items-center gap-3">
+        <img src="./assets/preview.jpeg" class="w-10 h-10 rounded bg-white p-1" />
+        <a href="index.html" class="font-bold text-lg">Rede de Monitoria</a>
+      </div>
 
-        <div class="w-44 bg-white p-4 rounded-xl shadow-lg">
-          <img src="./assets/preview.jpeg" alt="logo" class="w-full">
-        </div>
+      <div class="flex items-center gap-2">
+        <a href="login.html" class="px-3 py-1.5 rounded-md text-sm text-white border border-white hover:bg-white hover:text-[#166534] transition">Login</a>
 
-        <div class="text-center max-w-md">
-          <h2 class="text-white text-2xl font-bold mb-2">Bem vindo a Rede de Monitoria!</h2>
-          <p class="text-white">A plataforma onde alunos e monitores se encontram para ensinar e aprender!</p>
-        </div>
-      </section>
+        <a href="cadastro.html" class="px-3 py-1.5 rounded-md text-sm bg-white text-[#166534] font-medium hover:bg-gray-100 transition">Cadastro</a>
+      </div>
 
-      <section class="w-1/2 flex items-center justify-center bg-white"> 
-        <div class="max-w-md w-full px-8">
+    </div>
+  </header>
 
-          <h1 class="text-3xl text-gray-800 font-bold mb-8">Login</h1>
+  <main class="flex-1 flex items-center justify-center">
+    <!-- CONTEÚDO -->
+  </main>
 
-          <form class="flex flex-col gap-4 py-6">
-            <div>
-              <label for="matricula" class="block mb-2 w-full">Matrícula</label>
-              <input id="matricula" type="text" inputmode="numeric" placeholder="Insira sua matrícula" class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-green-600 focus:shadow-sm transition w-full"/>
-            </div>
+  <footer class="bg-[#166534] text-white text-center text-xs py-2">&copy; 2026 - Rede de Monitoria. Todos os direitos reservados.
+  </footer>
 
-            <div>
-              <label for="senha" class="block mb-2 w-full">Senha</label>
-              <input id="senha" type="password" placeholder="Insira sua senha" class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-green-600 focus:shadow-sm transition w-full"/>
-            </div>
-
-            <div class="text-right">
-              <a class="inline-block text-red-800 text-right text-sm hover:underline" href="">Esqueceu sua senha?</a>
-            </div>
-
-            <button class="w-full bg-[#166534] text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition duration-200 shadow-sm cursor-pointer hover:shadow-md">Entrar</button>
-          </form>
-
-          <p class="text-center mt-8 text-gray-600">
-            Não tem uma conta? <span class="text-[#166534] font-bold cursor-pointer hover:underline">Cadastre-se</span>
-          </p>
-        </div>
-      </section>
-    </main>
-    <script type="module" src="/src/js/main.js"></script>
-  </body>
+  <script type="module" src="/src/js/main.js"></script>
+</body>
 </html>
