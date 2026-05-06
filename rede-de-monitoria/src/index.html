@@ -4,19 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css">
-    <title>Index</title>
+    <title>Login - Rede de Monitoria</title>
   </head>
+
   <body>
     <main class="min-h-screen flex">
-      <section class="w-1/2 bg-[#065F2E] flex flex-col justify-center items-center p-16 gap-8">
-        <div class="w-40">
+
+      <section class="w-1/2 bg-gradient-to-br from-green-800 to-green-600 flex flex-col justify-center items-center p-16 gap-8">
+
+        <div class="w-44 bg-white p-4 rounded-xl shadow-lg">
           <img src="./assets/preview.jpeg" alt="logo" class="w-full">
         </div>
-        <div>
-          <h2 class="text-white font-bold">Bem vindo a Rede de monitoria!</h2>
+
+        <div class="text-center max-w-md">
+          <h2 class="text-white text-2xl font-bold mb-2">Bem vindo a Rede de Monitoria!</h2>
           <p class="text-white">A plataforma onde alunos e monitores se encontram para ensinar e aprender!</p>
         </div>
       </section>
+
       <section class="w-1/2 flex items-center justify-center bg-white"> 
         <div class="max-w-md w-full px-8">
 
@@ -25,17 +30,23 @@
           <form class="flex flex-col gap-4 py-6">
             <div>
               <label for="matricula" class="block mb-2 w-full">Matrícula</label>
-              <input id="matricula" type="number" placeholder="Insira sua matrícula" class="border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-green-600 w-full"/>
+              <input id="matricula" type="text" inputmode="numeric" placeholder="Insira sua matrícula" class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-green-600 focus:shadow-sm transition w-full"/>
             </div>
+
             <div>
               <label for="senha" class="block mb-2 w-full">Senha</label>
-              <input id="senha" type="password" placeholder="Insira sua senha" class="border border-gray-300 rounded-lg px-4 py-2 w-full"/>
+              <input id="senha" type="password" placeholder="Insira sua senha" class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:border-green-600 focus:shadow-sm transition w-full"/>
             </div>
-            <a class="text-red-800 text-right text-sm" href="">Esqueceu sua senha?</a>
-            <button class="w-full bg-[#166534] text-white rounded-sm">Entrar</button>
+
+            <div class="text-right">
+              <a class="inline-block text-red-800 text-right text-sm hover:underline" href="">Esqueceu sua senha?</a>
+            </div>
+
+            <button class="w-full bg-[#166534] text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition duration-200 shadow-sm cursor-pointer hover:shadow-md">Entrar</button>
           </form>
+
           <p class="text-center mt-8 text-gray-600">
-            Não tem conta? <span class="text-[#166534] font-bold cursor-pointer hover:underline">Cadastre-se</span>
+            Não tem uma conta? <span class="text-[#166534] font-bold cursor-pointer hover:underline">Cadastre-se</span>
           </p>
         </div>
       </section>
