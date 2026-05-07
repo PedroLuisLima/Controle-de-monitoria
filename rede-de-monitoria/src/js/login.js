@@ -17,6 +17,7 @@ botao.addEventListener('click', function login(){
     };
 
     if (loginValido == true){
+        location.href = 'home_aluno.html'
         alert('Sucesso!')
     }else{
         alert('Erro')

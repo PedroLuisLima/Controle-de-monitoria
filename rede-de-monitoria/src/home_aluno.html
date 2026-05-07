@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Turmas</title>
+</head>
+<body class="bg-[#f5f5f2] min-h-screen">
+    <div class="flex flex-col min-h-screen">
+        <header class="flex items-center justify-between px-6 py-4 bg-gradient-to-br from-green-500 to-green-800">
+            <div class="flex items-center gap-3">
+                <img src="./assets/Logo_RDM-removebg-preview.png" class="w-14 md:w-20" alt="logo">
+                <div>
+                    <h1 class="font-bold text-white">Rede de</h1>
+                    <h1 class="font-bold text-white">Monitoria IFPB</h1>
+                </div>
+            </div>
+            <h1 class="text-3xl font-bold text-white hidden md:block">
+                Turmas
+            </h1>
+            <div class="flex gap-4 text-3xl text-white">
+                <button>+</button>
+                <button>☰</button>
+                <a href="">
+                    <img src="" alt="perfil" class="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-white object-cover">
+                </a>
+            </div>
+        </header>
+        <main class="flex flex-1 md:px-8 pb-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 ">
+                <section class="lg:col-span-2 flex flex-col gap-6">
+                    <!-- Cards serão inseridos dinamicamente -->
+                     <!-- Exemplo de card. -->
+                      <a href="">
+                          <div class="bg-white border-2 border-green-800 rounded-2xl p-6 shadow-sm">
+                                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                                    <div>
+                                        <h2 class="text-3xl md:text-4xl font-bold text-green-900">
+                                        Exemplo 1
+                                        </h2>
+    
+                                        <p class="text-xl md:text-2xl text-gray-700">
+                                        Cards ficarão assim
+                                        </p>
+    
+                                        <p class="mt-4 text-lg md:text-xl text-gray-700">
+                                        Mas serão inseridos dinamicamente
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                      </a>
+                </section>
+            </div>
+        </main>
+    </div>
+    <footer class="bg-[#166534] text-white text-center text-xs py-2">
+        &copy; 2026 - Rede de Monitorias. Todos os direitos reservados.
+    </footer>
+    <script type="module" src="./js/home.js"></script>
+</body>
+</html>
