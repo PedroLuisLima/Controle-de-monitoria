@@ -10,27 +10,112 @@
 <body class="bg-gray-100 flex flex-col min-h-screen">
 
  <header class="bg-[#166534] text-white">
-    <div class="w-full px-6 py-3 flex items-center justify-between">
+    <div class="w-full px-6 py-2.5 flex items-center justify-between">
     
       <div class="flex items-center gap-3">
-        <img src="./assets/preview.jpeg" class="w-10 h-10 rounded bg-white p-1" />
-        <a href="index.html" class="font-bold text-lg">Rede de Monitoria</a>
+        <img src="./assets/Logo_RDM.png" class="w-9 h-9 rounded"/>
+        <h1 class="font-bold text-lg">Rede de Monitoria</h1>
       </div>
 
       <div class="flex items-center gap-2">
-        <a href="login.html" class="px-3 py-1.5 rounded-md text-sm text-white border border-white hover:bg-white hover:text-[#166534] transition">Login</a>
+        <a href="login.html" class="px-3 py-1.5 rounded-md text-sm text-white border border-white hover:bg-white hover:text-[#166534] transition-all duration-200">Login</a>
 
-        <a href="cadastro.html" class="px-3 py-1.5 rounded-md text-sm bg-white text-[#166534] font-medium hover:bg-gray-100 transition">Cadastro</a>
+        <a href="cadastro.html" class="px-3 py-1.5 rounded-md text-sm bg-white text-[#166534] font-medium hover:bg-gray-200 transition-all duration-200">Cadastro</a>
       </div>
 
     </div>
   </header>
 
-  <main class="flex-1 flex items-center justify-center">
-    <!-- CONTEÚDO -->
+  <main class="flex-1">
+
+    <section class="bg-gradient-to-br from-green-800 to-green-600 text-white py-24 px-6">
+      <div class="max-w-5xl mx-auto flex flex-col items-center text-center">
+
+        <img src="./assets/Logo_RDM.png" class="w-28 h-28 rounded-xl bg-white p-3 shadow-lg mb-8"/>
+
+        <h2 class="text-4xl font-bold mb-4">Conectando alunos, monitores e coordenadores</h2>
+
+        <p class="max-w-2xl text-green-100 text-lg mb-8">
+          A Rede de Monitoria facilita a comunicação, organização e acompanhamento das monitorias acadêmicas em um só lugar.
+        </p>
+
+        <div class="flex gap-4">
+          <a href="login.html"
+            class="bg-white text-[#166534] px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-all duration-200 shadow-sm hover:shadow-md">
+            Entrar
+          </a>
+
+          <a href="cadastro.html"
+            class="border border-white px-6 py-3 rounded-lg hover:bg-white hover:text-[#166534] transition-all duration-200">
+            Criar conta
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 px-6 bg-gray-100">
+      <div class="max-w-6xl mx-auto">
+
+        <h3 class="text-3xl font-bold text-center text-gray-800 mb-5">
+          Funcionalidades da plataforma
+        </h3>
+
+        <p class="text-center text-gray-600 max-w-3xl mx-auto mb-14 text-lg">
+          Recursos pensados para melhorar a experiência de alunos, monitores e coordenadores no acompanhamento das monitorias.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-8">
+
+          <div class="bg-white rounded-xl shadow-sm p-8 hover:-translate-y-1 hover:shadow-md transition-all duration-300">
+            
+            <h4 class="text-2xl font-bold text-[#166534] mb-4">Para alunos</h4>
+
+            <p class="text-gray-600 mb-5">
+              Acesse suas turmas de monitoria, materiais de estudo e links de reuniões em um só lugar.
+            </p>
+
+            <ul class="text-gray-600 text-sm space-y-2 list-disc pl-5">
+              <li>Chat com monitores</li>
+              <li>Acesso a materiais</li>
+              <li>Links para monitorias online</li>
+            </ul>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-sm p-8 hover:-translate-y-1 hover:shadow-md transition-all duration-300">
+            
+            <h4 class="text-2xl font-bold text-[#166534] mb-4">Para monitores</h4>
+
+            <p class="text-gray-600 mb-5">
+              Organize suas monitorias e compartilhe conteúdos com os alunos.
+            </p>
+
+            <ul class="text-gray-600 text-sm space-y-2 list-disc pl-5">
+              <li>Gerenciamento de turmas</li>
+              <li>Envio de materiais de estudo</li>
+              <li>Atualização de horários</li>
+            </ul>
+          </div>
+
+          <div class="bg-white rounded-xl shadow-sm p-8 hover:-translate-y-1 hover:shadow-md transition-all duration-300">
+            
+            <h4 class="text-2xl font-bold text-[#166534] mb-4">Para coordenadores</h4>
+
+            <p class="text-gray-600 mb-5">
+              Acompanhe as monitorias e facilite a organização acadêmica.
+            </p>
+
+            <ul class="text-gray-600 text-sm space-y-2 list-disc pl-5">
+              <li>Visualização das turmas</li>
+              <li>Controle das monitorias</li>
+              <li>Acompanhamento acadêmico</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="bg-[#166534] text-white text-center text-xs py-2">&copy; 2026 - Rede de Monitorias. Todos os direitos reservados.
+  <footer class="bg-[#166534] text-white text-center text-xs py-2.5">&copy; 2026 - Rede de Monitoria. Todos os direitos reservados.
   </footer>
 
   <script type="module" src="./js/main.js"></script>
