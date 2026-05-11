@@ -1,13 +1,21 @@
-import users from '../data/usuarios.js'
+import bcrypt from "bcryptjs";
 
-let botao = document.getElementById('btn_login')
+let botaoLogin = document.getElementById('btn_login')
 
-botao.addEventListener('click', function login(){
-    event.preventDefault();
+botaoLogin.addEventListener('click', function login(evt){
+    evt.preventDefault();
 
     let getMatricula = document.getElementById('matricula').value
     let getSenha = document.getElementById('senha').value
     let loginValido = false;
+
+    const users = JSON.parse(localStorage.getItem("usuarios")) || []
+    
+    if (typeof getSenha !== "string"){
+        getSenha = getSenha.toString()
+    }
+
+    getSenha = bcrypt.hash(getSenha, 10)
 
     for (const user of users){
         if (getMatricula == user.matricula && getSenha == user.senha){
@@ -18,8 +26,8 @@ botao.addEventListener('click', function login(){
 
     if (loginValido == true){
         location.href = 'home_aluno.html'
-        alert('Sucesso!')
+        alert('Sucesso!');
     }else{
-        alert('Erro')
+        alert('Erro');
     }
-})
+});
