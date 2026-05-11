@@ -48,3 +48,14 @@ botaoCadastro.addEventListener('click', function cadastro(evt){
         location.href = "login.html"
     }
 });
+
+const inputFoto = document.getElementById("foto");
+const nomeArquivo = document.getElementById("nome-arquivo");
+
+inputFoto.addEventListener("change", () => {
+  if (inputFoto.files.length > 0) {
+    nomeArquivo.textContent = inputFoto.files[0].name;
+  } else {
+    nomeArquivo.textContent = "Nenhum arquivo escolhido";
+  }
+});
