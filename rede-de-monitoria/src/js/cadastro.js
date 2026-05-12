@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 
 let botaoCadastro = document.getElementById('btn_cadastro')
 
-botaoCadastro.addEventListener('click', function cadastro(evt){
+botaoCadastro.addEventListener('click', async function cadastro(evt){
     evt.preventDefault();
     
     let getNome = document.getElementById('nomeCompleto').value
@@ -34,13 +34,15 @@ botaoCadastro.addEventListener('click', function cadastro(evt){
         }
     }
 
+    const senhaHash = await bcrypt.hash(getSenha, 10)
+
     if ((verifiedEmail && verifiedMatricula) === true){
         let user = {
             id: id,
             nome: getNome,
             matricula: getMatricula,
             email: getEmail,
-            senha: bcrypt.hash(getSenha, 10),
+            senha: senhaHash,
             foto: getFoto,
         }
         users.push(user)
