@@ -2,7 +2,7 @@ import bcrypt from "bcryptjs";
 
 let botaoLogin = document.getElementById('btn_login')
 
-botaoLogin.addEventListener('click', function login(evt){
+botaoLogin.addEventListener('click', async function login(evt){
     evt.preventDefault();
 
     let getMatricula = document.getElementById('matricula').value
@@ -15,11 +15,11 @@ botaoLogin.addEventListener('click', function login(evt){
         getSenha = getSenha.toString()
     }
 
-    getSenha = bcrypt.hash(getSenha, 10)
-
     for (const user of users){
-        if (getMatricula == user.matricula && getSenha == user.senha){
-            loginValido = true
+        const senhaValida = await bcrypt.compare(getSenha, user.senha)
+
+        if (getMatricula == user.matricula && senhaValida){
+            loginValido = true;
             break
         }
     };
