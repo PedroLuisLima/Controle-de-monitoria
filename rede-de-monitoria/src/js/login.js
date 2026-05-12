@@ -25,7 +25,11 @@ botaoLogin.addEventListener('click', async function login(evt){
     };
 
     if (loginValido == true){
-        location.href = 'home_aluno.html'
+        const userLogado = {
+            matricula: getMatricula,
+        }
+        sessionStorage.setItem("userLogado", JSON.stringify(userLogado))
+        window.location.href = 'home_aluno.html'
         alert('Sucesso!');
     }else{
         alert('Erro');
