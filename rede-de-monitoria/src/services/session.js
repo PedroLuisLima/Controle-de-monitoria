@@ -1,20 +1,24 @@
 import bcrypt from "bcryptjs";
+import { getUsers } from "./storage";
 
-let form = document.querySelector('form')
+function logout(){
+    sessionStorage.clear()
+    location.reload()
+}
 
-form.addEventListener('submit', async function login(evt){
+async function login(evt){
     evt.preventDefault();
-
+    
     let getMatricula = document.getElementById('matricula').value
     let getSenha = document.getElementById('senha').value
     let senhaValida = false;
-
-    const users = JSON.parse(localStorage.getItem("usuarios")) || []
+    
+    const users = getUsers()
     
     const user = users.find(
         user => user.matricula === getMatricula
     );
-
+    
     if (user){
         senhaValida = await bcrypt.compare(getSenha, user.senha)
     };
@@ -31,4 +35,6 @@ form.addEventListener('submit', async function login(evt){
     }else{
         alert('Matrícula ou senha incorretos.');
     }
-});
+}
+
+export {logout, login};
