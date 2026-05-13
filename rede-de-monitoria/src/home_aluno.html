@@ -19,12 +19,18 @@
             <h1 class="text-3xl font-bold text-white hidden md:block">
                 Turmas
             </h1>
-            <div class="flex gap-4 text-3xl text-white">
-                <button>+</button>
-                <button>☰</button>
-                <a href="">
-                    <img src="" alt="perfil" class="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-white object-cover">
-                </a>
+            <div class="relative">
+                <button id="profile">
+                    <img src="./assets/icons/account_circle_90dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png" alt="perfil" class="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-white object-cover">
+                </button>
+                <div id="menu" class="hidden absolute top-16 right-0 w-40 bg-white rounded-md shadow-md p-2">
+                    <button class="block w-full text-left p-2 hover:bg-gray-100 border-b">
+                        Informações
+                    </button>
+                    <button id="logout" class="block w-full text-left p-2 hover:bg-gray-100 border-b">
+                        Logout
+                    </button>
+                </div>
             </div>
         </header>
         <main class="flex flex-1 md:px-8 pb-8">
@@ -46,5 +52,6 @@
     </footer>
     <script src="js/authGuard.js"></script>
     <script type="module" src="./js/home.js"></script>
+    <script type="module" src="./js/logout.js"></script>
 </body>
 </html>
