@@ -34,45 +34,29 @@
         <form class="flex flex-col gap-4">
 
           <div>
-            <label for="nome" class="block mb-2">Nome completo</label>
+            <label for="nomeCompleto" class="block mb-2">Nome completo</label>
 
-            <input id="nomeCompleto" type="text" placeholder="Digite seu nome completo" class="border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:border-green-600 focus:shadow-sm transition"/>
+            <input required id="nomeCompleto" type="text" placeholder="Digite seu nome completo" class="border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:border-green-600 focus:shadow-sm transition"/>
           </div>
 
           <div>
             <label for="matricula" class="block mb-2">Matrícula</label>
 
-            <input id="matricula" type="text" inputmode="numeric" placeholder="Digite sua matrícula" class="border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:border-green-600 focus:shadow-sm transition"/>
+            <input required id="matricula" type="text" inputmode="numeric" placeholder="Digite sua matrícula" class="border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:border-green-600 focus:shadow-sm transition"/>
           </div>
 
           <div>
             <label for="email" class="block mb-2">E-mail acadêmico</label>
 
-            <input id="email" type="email" placeholder="seuemail@academico.com" class="border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:border-green-600 focus:shadow-sm transition"/>
+            <input required id="email" type="email" placeholder="seuemail@academico.com" class="border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:border-green-600 focus:shadow-sm transition"/>
           </div>
 
           <div>
             <label for="senha" class="block mb-2">Senha</label>
 
-            <input id="senha" type="password" placeholder="Crie uma senha" class="border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:border-green-600 focus:shadow-sm transition"/>
+            <input required id="senha" type="password" placeholder="Crie uma senha" class="border border-gray-300 rounded-lg px-4 py-2 w-full focus:outline-none focus:border-green-600 focus:shadow-sm transition"/>
           </div>
-
-          <div>
-            <label class="block mb-2">Foto de perfil</label>
-
-            <div class="flex items-center gap-4">
-
-              <label for="foto" class="bg-green-100 text-[#166534] px-4 py-2 rounded-lg font-medium cursor-pointer hover:bg-green-200 transition">
-                Escolher arquivo
-              </label>
-
-              <span id="nome-arquivo" class="text-sm text-gray-500">Nenhum arquivo escolhido</span>
-            </div>
-
-            <input id="foto" type="file" class="hidden"/>
-          </div>
-
-          <button id="btn_cadastro" type="submit" class="w-full bg-[#166534] text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition duration-200 shadow-sm cursor-pointer hover:shadow-md mt-2">Criar conta</button>
+          <button type="submit" class="w-full bg-[#166534] text-white py-3 rounded-lg font-semibold hover:bg-green-700 transition duration-200 shadow-sm cursor-pointer hover:shadow-md mt-2">Criar conta</button>
         </form>
 
         <p class="text-center mt-8 text-gray-600">
