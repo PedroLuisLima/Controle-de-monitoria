@@ -1,37 +1,34 @@
 import bcrypt from "bcryptjs";
 
-let botaoLogin = document.getElementById('btn_login')
+let form = document.querySelector('form')
 
-botaoLogin.addEventListener('click', async function login(evt){
+form.addEventListener('submit', async function login(evt){
     evt.preventDefault();
 
     let getMatricula = document.getElementById('matricula').value
     let getSenha = document.getElementById('senha').value
-    let loginValido = false;
+    let senhaValida = false;
 
     const users = JSON.parse(localStorage.getItem("usuarios")) || []
     
-    if (typeof getSenha !== "string"){
-        getSenha = getSenha.toString()
-    }
+    const user = users.find(
+        user => user.matricula === getMatricula
+    );
 
-    for (const user of users){
-        const senhaValida = await bcrypt.compare(getSenha, user.senha)
-
-        if (getMatricula == user.matricula && senhaValida){
-            loginValido = true;
-            break
-        }
+    if (user){
+        senhaValida = await bcrypt.compare(getSenha, user.senha)
     };
-
-    if (loginValido == true){
+    
+    if (senhaValida){
         const userLogado = {
-            matricula: getMatricula,
+            id: user.id,
+            nome: user.nome,
+            matricula: user.matricula,
         }
         sessionStorage.setItem("userLogado", JSON.stringify(userLogado))
-        window.location.href = 'home_aluno.html'
         alert('Sucesso!');
+        window.location.href = 'home_aluno.html'
     }else{
-        alert('Erro');
+        alert('Matrícula ou senha incorretos.');
     }
 });
