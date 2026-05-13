@@ -1,63 +1,42 @@
 import {v4 as uuidv4} from 'uuid';
 import bcrypt from "bcryptjs";
 
-let botaoCadastro = document.getElementById('btn_cadastro')
+let form = document.querySelector('form')
 
-botaoCadastro.addEventListener('click', async function cadastro(evt){
+form.addEventListener('submit', async function cadastro(evt){
     evt.preventDefault();
     
-    let getNome = document.getElementById('nomeCompleto').value
-    let getMatricula = document.getElementById('matricula').value
-    let getEmail = document.getElementById('email').value
+    let getNome = document.getElementById('nomeCompleto').value.trim()
+    let getMatricula = document.getElementById('matricula').value.trim()
+    let getEmail = document.getElementById('email').value.trim().toLowerCase()
     let getSenha = document.getElementById('senha').value
-    let getFoto = document.getElementById('foto').value
     let id = uuidv4()
-
-    if (typeof getSenha !== "string"){
-        getSenha = getSenha.toString()
-    }
-
-    let verifiedMatricula = true;
-    let verifiedEmail = true;
 
     const users = JSON.parse(localStorage.getItem("usuarios")) || []
     
-    for (let user of users){
-        if (user.email.toLowerCase() === getEmail.toLowerCase()){
-            alert("E-mail já cadastrado, faça login.")
-            verifiedEmail = false;
-            break
-        }else if (user.matricula === getMatricula){
-            alert("Matrícula já cadastrada, faça login.")
-            verifiedMatricula = false;
-            break
-        }
-    }
+    const existeEmail = users.some(
+        user => user.email === getEmail
+    );
 
-    const senhaHash = await bcrypt.hash(getSenha, 10)
-
-    if ((verifiedEmail && verifiedMatricula) === true){
+    const existeMatricula = users.some(
+        user => user.matricula === getMatricula
+    );
+    
+    if (!existeEmail && !existeMatricula){
+        
+        const senhaHash = await bcrypt.hash(getSenha, 10)
+        
         let user = {
             id: id,
             nome: getNome,
             matricula: getMatricula,
             email: getEmail,
             senha: senhaHash,
-            foto: getFoto,
         }
         users.push(user)
         localStorage.setItem("usuarios", JSON.stringify(users))
-        location.href = "login.html"
+        window.location.href = "login.html"
+    } else{
+        window.alert("Email ou matrícula já cadastrados.")
     }
-});
-
-const inputFoto = document.getElementById("foto");
-const nomeArquivo = document.getElementById("nome-arquivo");
-
-inputFoto.addEventListener("change", () => {
-  if (inputFoto.files.length > 0) {
-    nomeArquivo.textContent = inputFoto.files[0].name;
-  } else {
-    nomeArquivo.textContent = "Nenhum arquivo escolhido";
-  }
 });
