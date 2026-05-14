@@ -159,9 +159,13 @@ Durante o desenvolvimento do projeto estão sendo aplicados conceitos importante
 
 ---
 
-# 👨‍💻 Autor
+# 👨‍💻 Autores
 
-Desenvolvido por [Pedro Lima GitHub](https://github.com/PedroLuisLima?utm_source=chatgpt.com)
+| Nome | GitHub |
+|---|---|
+| Pedro Lima | [@PedroLuisLima](https://github.com/PedroLuisLima) |
+| Vinícius | [@07rlvinicius-ai](https://github.com/07rlvinicius-ai) |
+| Maria Clara | [@mariaclara-fs](https://github.com/mariaclara-fs) |
 
 ---
 
