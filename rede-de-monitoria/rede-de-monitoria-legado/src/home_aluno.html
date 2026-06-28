@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Turmas</title>
+</head>
+<body class="bg-[#f5f5f2] min-h-screen">
+    <div class="flex flex-col min-h-screen">
+        <header class="flex items-center justify-between px-6 py-4 bg-gradient-to-br from-green-500 to-green-800">
+            <div class="flex items-center gap-3">
+                <img src="./assets/Logo_RDM-removebg-preview.png" class="w-14 md:w-20" alt="logo">
+                <div>
+                    <h1 class="font-bold text-white">Rede de</h1>
+                    <h1 class="font-bold text-white">Monitoria IFPB</h1>
+                </div>
+            </div>
+            <h1 class="text-3xl font-bold text-white hidden md:block">
+                Turmas
+            </h1>
+            <div class="relative">
+                <button id="profile">
+                    <img src="./assets/icons/account_icon.png" alt="perfil" class="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-white object-cover">
+                </button>
+                <div id="menu" class="hidden absolute top-16 right-0 w-40 bg-white rounded-md shadow-md p-2">
+                    <button class="block w-full text-left p-2 hover:bg-gray-100 border-b">
+                        Informações
+                    </button>
+                    <button id="logout" class="block w-full text-left p-2 hover:bg-gray-100 border-b">
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </header>
+        <main class="flex flex-1 justify-center md:px-8 pb-8">
+            <div class="w-full max-w-6xl"> 
+                <section id="cards-section" class="grid grid-cols-1 md:grid-cols-2 gap-8 p-10 justify-items-center content-start">
+                    <!-- Cards inseridos dinamicamente -->
+                </section>
+            </div>
+        </main>
+    </div>
+    <footer class="bg-[#166534] text-white text-center text-xs py-2">
+        &copy; 2026 - Rede de Monitoria. Todos os direitos reservados.
+    </footer>
+    <script src="./guards/authGuard.js"></script>
+    <script type="module" src="./pages/home.js"></script>
+    <script type="module" src="./pages/logout.js"></script>
+</body>
+</html>
