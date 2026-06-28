@@ -8,26 +8,15 @@ function AppRoutes(){
     return(
         <BrowserRouter>
             <Routes>
-                <Route>
-                    path="/"
-                    element={<Home />}
-                </Route>
-                <Route>
-                    path="/login"
-                    element={<Login />}
-                </Route>
-                <Route>
-                    path="/cadastro"
-                    element={<Cadastro />}
-                </Route>
-                <Route>
-                    path="/disciplina/:id"
-                    element={<Disciplina />}
-                </Route>
-                <Route>
-                    path="*"
-                    element={<h1>Página não encontrada.</h1>}
-                </Route>
+                <Route path="/" element={<Home />}/>
+                
+                <Route path="/login" element={<Login />}/>
+                
+                <Route path="/cadastro" element={<Cadastro />}/>
+                
+                <Route path="/disciplina/:id" element={<Disciplina />}/>
+                
+                <Route path="*" element={<h1>Página não encontrada.</h1>}/> 
             </Routes>
         </BrowserRouter>
     );
