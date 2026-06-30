@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import "./globals.css";
 import QueryProvider from "@/providers/QueryProvider";
 import { AuthProvider } from "@/contexts/AuthContext";
