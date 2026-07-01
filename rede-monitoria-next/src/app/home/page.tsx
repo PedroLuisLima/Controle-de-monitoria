@@ -1,8 +1,14 @@
 "use client";
 
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Home(){
+    const router = useRouter();
+
+    const navigateTo = (path: string) => {
+        router.push(path);
+    };
+
     return(
         <main className="bg-gray-100 flex flex-col min-h-screen">
             <header className="bg-[#166534] text-white">
@@ -12,12 +18,12 @@ export default function Home(){
                         <h1 className="font-bold text-lg">Rede de Monitoria</h1>
                     </div>
                     <div className="flex items-center gap-2">
-                        <Link href="/login" className="px-3 py-1.5 rounded-md text-sm text-white border border-white hover:bg-white hover:text-[#166534] transition-all duration-200">
+                        <button onClick={() => navigateTo("/login")} className="px-3 py-1.5 rounded-md text-sm text-white border border-white hover:bg-white hover:text-[#166534] transition-all duration-200 cursor-pointer">
                             Login
-                        </Link>
-                        <Link href="/cadastro" className="px-3 py-1.5 rounded-md text-sm bg-white text-[#166534] font-medium hover:bg-gray-200 transition-all duration-200">
+                        </button>
+                        <button onClick={() => navigateTo("/cadastro")} className="px-3 py-1.5 rounded-md text-sm bg-white text-[#166534] font-medium hover:bg-gray-200 transition-all duration-200 cursor-pointer">
                             Cadastro
-                        </Link>
+                        </button>
                     </div>
                 </div>
             </header>
@@ -30,12 +36,12 @@ export default function Home(){
                             A Rede de Monitoria facilita a comunicação, organização e acompanhamento das monitorias acadêmicas em um só lugar.
                         </p>
                         <div className="flex gap-4">
-                            <Link href="/login" className="bg-white text-[#166534] px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-all duration-200 shadow-sm hover:shadow-md">
+                            <button onClick={() => navigateTo("/login")} className="bg-white text-[#166534] px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer">
                                 Entrar
-                            </Link>
-                            <Link href="/cadastro" className="border border-white px-6 py-3 rounded-lg hover:bg-white hover:text-[#166534] transition-all duration-200">
+                            </button>
+                            <button onClick={() => navigateTo("/cadastro")} className="border border-white px-6 py-3 rounded-lg hover:bg-white hover:text-[#166534] transition-all duration-200 cursor-pointer">
                                 Criar conta
-                            </Link>
+                            </button>
                         </div>
                     </div>
                 </section>
