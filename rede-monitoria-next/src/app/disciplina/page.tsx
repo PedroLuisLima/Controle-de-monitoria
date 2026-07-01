@@ -2,17 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
+import { supabase } from "@/services/supabase";
 
 type Material = {
   id: string;
   title: string;
   link: string;
-};
-
-type Duvida = {
-  id: string;
-  question: string;
-  author: string;
 };
 
 export default function Disciplina(){
@@ -21,21 +16,48 @@ export default function Disciplina(){
   const [professor, setProfessor] = useState("Indefinido");
   const [turma, setTurma] = useState("-");
   const [materiais, setMateriais] = useState<Material[]>([]);
-  const [duvidas, setDuvidas] = useState<Duvida[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (id) {
       setNome(`Disciplina ${id}`);
       setProfessor("Prof. Exemplo");
       setTurma("CT-01");
-      setMateriais([
-        { id: "1", title: "Aula 1 - Introdução", link: "#" },
-        { id: "2", title: "Aula 2 - Material de apoio", link: "#" },
-      ]);
-      setDuvidas([
-        { id: "1", question: "Quando é a entrega do trabalho?", author: "Aluno A" },
-        { id: "2", question: "Qual o peso da avaliação?", author: "Aluno B" },
-      ]);
+
+      const fetchMaterials = async () => {
+        setLoading(true);
+        setError(null);
+        try {
+          const { data, error } = await supabase
+            .from("materiais")
+            .select("id, title, link")
+            .eq("disciplina_id", id);
+
+          if (error) {
+            console.error("Erro ao buscar materiais:", error);
+            setError("Erro ao buscar materiais");
+            setMateriais([]);
+            return;
+          }
+
+          const mapped = (data ?? []).map((m: any) => ({
+            id: String(m.id),
+            title: m.title ?? "(sem título)",
+            link: m.link ?? "",
+          }));
+
+          setMateriais(mapped as Material[]);
+        } catch (err) {
+          console.error("Erro inesperado ao buscar materiais:", err);
+          setError("Erro inesperado ao buscar materiais");
+          setMateriais([]);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      fetchMaterials();
     }
   }, [id]);
 
@@ -44,7 +66,7 @@ export default function Disciplina(){
       <div className="flex flex-col min-h-screen">
         <header className="flex items-center justify-between px-6 py-4 bg-gradient-to-br from-green-500 to-green-800">
           <div className="flex items-center gap-3">
-            <img src="/Logo_RDM.png" className="w-14 md:w-20" alt="logo" />
+            <img src="./assets/Logo_RDM-removebg-preview.png" className="w-14 md:w-20" alt="logo" />
             <div>
               <h1 className="font-bold text-white">Rede de</h1>
               <h1 className="font-bold text-white">Monitoria IFPB</h1>
@@ -68,31 +90,36 @@ export default function Disciplina(){
               </div>
             </section>
 
-            <section className="grid gap-6 lg:grid-cols-2">
+            <section className="grid gap-6">
               <div className="bg-white rounded-3xl p-6 shadow-sm">
                 <h2 className="text-xl font-semibold text-gray-800">Materiais</h2>
-                <ul className="mt-4 space-y-4 text-gray-700">
-                  {materiais.map((material) => (
-                    <li key={material.id}>
-                      <a href={material.link} className="font-medium text-green-800 hover:underline">
-                        {material.title}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="grid gap-6">
-                <div className="bg-white rounded-3xl p-6 shadow-sm">
-                  <h2 className="text-xl font-semibold text-gray-800">Dúvidas</h2>
-                  <ul className="mt-4 space-y-3 text-gray-700">
-                    {duvidas.map((duvida) => (
-                      <li key={duvida.id}>
-                        <p className="font-medium">{duvida.question}</p>
-                        <p className="text-sm text-gray-500">{duvida.author}</p>
-                      </li>
-                    ))}
-                  </ul>
+                <div className="mt-4 text-gray-700">
+                  {loading ? (
+                    <p>Carregando materiais...</p>
+                  ) : error ? (
+                    <p className="text-red-600">{error}</p>
+                  ) : materiais.length === 0 ? (
+                    <p>Nenhum material encontrado para esta disciplina.</p>
+                  ) : (
+                    <ul className="space-y-4">
+                      {materiais.map((material) => (
+                        <li key={material.id}>
+                          {material.link ? (
+                            <a
+                              href={material.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="font-medium text-green-800 hover:underline"
+                            >
+                              {material.title}
+                            </a>
+                          ) : (
+                            <span className="font-medium">{material.title}</span>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </div>
             </section>
