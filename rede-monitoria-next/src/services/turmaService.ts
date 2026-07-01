@@ -34,3 +34,18 @@ export async function deletarTurma(id: string) {
     throw error;
   }
 }
+
+export async function buscarTurmaPorId(id: string) {
+
+    const { data, error } = await supabase
+        .from("turmas")
+        .select("*")
+        .eq("id", id)
+        .single();
+
+    if (error)
+        throw error;
+
+    return data;
+
+}
