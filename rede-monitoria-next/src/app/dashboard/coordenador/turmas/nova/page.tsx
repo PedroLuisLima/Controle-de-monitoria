@@ -3,35 +3,17 @@
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import TurmaForm from "@/components/turmas/TurmaForm";
-import {criarTurma,} from "@/services/turmaService";
 import { TurmaFormData } from "@/schemas/turmaSchema";
+import useCreateTurma from "@/hooks/useCreateTurma";
 
-import { supabase } from "@/services/supabase";
-
-/* A implementar
-async function handleCreate(data: TurmaFormData) {
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  console.log("Sessão:", session);
-
-  await criarTurma(data.nome, data.curso);
-}
-*/
 export default function NovaTurmaPage() {
 
   const router = useRouter();
+  const createTurmaMutation = useCreateTurma();
 
-  async function handleCreate(
-    data: TurmaFormData
-  ) {
-
+  async function handleCreate(data: TurmaFormData) {
     try {
-      await criarTurma(
-        data.nome,
-        data.curso
-      );
+      await createTurmaMutation.mutateAsync(data);
 
       toast.success("Turma criada com sucesso!");
       router.push("/dashboard/coordenador/turmas");

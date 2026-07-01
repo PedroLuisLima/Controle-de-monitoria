@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { supabase } from "@/services/supabase";
+import { useAuth } from "@/hooks/useAuth";
 
 type Material = {
   id: string;
@@ -12,15 +13,32 @@ type Material = {
 
 export default function Disciplina(){
   const { id } = useParams();
+  const { profile, loading: authLoading } = useAuth();
   const [nome, setNome] = useState("Nome da disciplina");
-  const [professor, setProfessor] = useState("Indefinido");
+  const [professor, setProfessor] = useState("Prof. Exemplo");
   const [turma, setTurma] = useState("-");
   const [materiais, setMateriais] = useState<Material[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [accessDenied, setAccessDenied] = useState(false);
 
   useEffect(() => {
-    if (id) {
+    if (!authLoading && id) {
+      if (!profile) {
+        setAccessDenied(true);
+        return;
+      }
+
+      const role = profile.role?.toLowerCase?.() ?? "";
+      const studentHasAccess = role === "aluno" && String(profile.turma_id) === String(id);
+      const isStudent = role === "aluno";
+
+      if (isStudent && !studentHasAccess) {
+        setAccessDenied(true);
+        return;
+      }
+
+      setAccessDenied(false);
       setNome(`Disciplina ${id}`);
       setProfessor("Prof. Exemplo");
       setTurma("CT-01");
@@ -59,7 +77,28 @@ export default function Disciplina(){
 
       fetchMaterials();
     }
-  }, [id]);
+  }, [id, profile, authLoading]);
+
+  if (authLoading || loading) {
+    return (
+      <div className="bg-[#f5f5f2] min-h-screen flex items-center justify-center">
+        <p>Carregando...</p>
+      </div>
+    );
+  }
+
+  if (accessDenied) {
+    return (
+      <div className="bg-[#f5f5f2] min-h-screen flex items-center justify-center">
+        <div className="bg-white rounded-3xl p-8 shadow-sm max-w-xl text-center">
+          <h1 className="text-2xl font-bold text-red-700 mb-4">Acesso negado</h1>
+          <p className="text-gray-700">
+            Você não tem permissão para acessar esta disciplina.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return(
     <div className="bg-[#f5f5f2] min-h-screen">
